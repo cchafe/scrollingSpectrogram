@@ -262,7 +262,7 @@ void SpectrogramVisualizer::plotSpectrogram() {
 
     /* plot axes */
     char xLabel[] = "t(s)", yLabel[] = "f(Hz)";
-    drawAxes(runTime - endTime, runTime, EPSILON, highestFrequency, 1.0, 1.0, xLabel, yLabel);
+//    drawAxes(runTime - endTime, runTime, EPSILON, highestFrequency, 1.0, 1.0, xLabel, yLabel);
 
     /* plot frequency read-off line(s) */
     if (frequencyReadOff) {
@@ -458,6 +458,7 @@ void SpectrogramVisualizer::scrollSpectrogram() {
 
     /* add new data */
     for (j = 0; j < AudioInput::N_FREQUENCIES; ++j) {
+      if ( j < 10) newSpectrogramData[j] = 0.0;
         spectrogramFloat[j * n + n - 1] = newSpectrogramData[j];
         spectrogramBytes[j * n + n - 1] = colorByteMap(newSpectrogramData[j]);
     }

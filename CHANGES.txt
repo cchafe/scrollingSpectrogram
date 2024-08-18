@@ -1,7 +1,46 @@
-only draw SPECTROGRAM
-comment out other display elements in common.h
+///////////////////////////////////////////////
+only draw SPECTROGRAM -- comment out other display elements in common.h
 //#define DISPLAY_TIME 1
 //#define DISPLAY_SPECMAG 1
 #define DISPLAY_SPECTROGRAM 1
 //#define DISPLAY_TEXT 1
+
+///////////////////////////////////////////////
+always list all audio interfaces in terminal
+main.cpp
+
+///////////////////////////////////////////////
+use interface 8 = "sysdefault" to connect to pipewire alsa
+main.cpp
+
+///////////////////////////////////////////////
+samplingRate = 48000;
+changed 3 lines in 
+PortAudio.cpp
+
+///////////////////////////////////////////////
+reduce display bandwidth
+const unsigned int AudioInput::N_FREQUENCIES = 100; // was 2048 560
+AudioInput.cpp
+
+///////////////////////////////////////////////
+blank the lowest 10 bins of the display
+      if ( j < 10) newSpectrogramData[j] = 0.0;
+SpectrogramVisualizer.cpp
+
+///////////////////////////////////////////////
+don't draw axes
+//    drawAxes(runTime - endTime, runTime, EPSILON, highestFrequency, 1.0, 1.0, xLabel, yLabel);
+SpectrogramVisualizer.cpp
+
+///////////////////////////////////////////////
+reduce display height
+  h = 500;
+Display.cpp
+
+///////////////////////////////////////////////
+reduce initial window (canvas) height
+    glutInitWindowSize(1280, 600);
+Display.cpp
+
 

@@ -35,13 +35,25 @@ const char* const helptext[] = {
 
 int getInputDeviceId(const char *fn)
 {
-    //YAML::Node config = YAML::LoadFile(fn);
-    //return config["device_id"].as<int>();
-    return 7;
+    return 8; // sysdefault uses pipewire alsa
 } 
 
 int main(int argc, char** argv)
 {
+
+  Pa_Initialize();
+  int numDevices;
+  numDevices = Pa_GetDeviceCount();
+  if( numDevices < 0 ) printf( "ERROR: Pa_CountDevices returned %d\n", numDevices );
+    else printf( "ok: Pa_CountDevices returned %d\n", numDevices );
+  const   PaDeviceInfo *deviceInfo;
+  for( int i=0; i<numDevices; i++ )
+  {
+    deviceInfo = Pa_GetDeviceInfo( i );
+    printf( "--------------------------------------- device #%d\n", i );
+    printf( "Name                        = %s\n", deviceInfo->name );
+  }
+
   /* set default values, and change as specified by the user via command line options */
   screenMode = 0;  /* default to windowed unless user specifies full via -f */
   verbosity = 0;  /* default to std::cout */

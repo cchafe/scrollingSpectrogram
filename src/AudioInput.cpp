@@ -3,7 +3,7 @@
 /* static member declarations and initializations */
 const unsigned int AudioInput::VERBOSITY = 2;
 // TODO needs to be dynamically set to fftLength / 2 once class organization is cleaned up.
-const unsigned int AudioInput::N_FREQUENCIES = 2048; // 560
+const unsigned int AudioInput::N_FREQUENCIES = 100; // was 2048 560
 const unsigned int AudioInput::N_TIME_WINDOWS = 940; // default: 940windows @2048samples (46ms) => 43.65s
 
 AudioInput::AudioInput() {

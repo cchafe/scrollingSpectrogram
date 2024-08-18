@@ -9,7 +9,7 @@ PortAudio::PortAudio(int requestedInputDeviceId)
   : AudioInput()
 {
     this->requestedInputDeviceId = requestedInputDeviceId;
-    samplingRate = 44100;
+    samplingRate = 48000;
     samplingPeriod = 1.0f/samplingRate;
     //stream = nullptr;
     bufferMemorySeconds = 5;
@@ -135,7 +135,7 @@ int PortAudio::startCapture()
             &stream,
             &inputParams,
             NULL,
-            44100,
+            48000,
             paFramesPerBufferUnspecified,
             paNoFlag,
             audioIn,
@@ -153,7 +153,7 @@ int PortAudio::startCapture()
                 1,  // # input channels
                 0,  // # output channels
                 paFloat32,
-                44100,  // sampling rate
+                48000,  // sampling rate
                 paFramesPerBufferUnspecified,
                 audioIn,
                 (void*)this

@@ -17,7 +17,8 @@ Display::Display(int argc, char** argv, int screenMode)
     glutEnterGameMode();  /* starts fullscreen game mode */
   }
   else {
-    glutInitWindowSize(1280, 768);
+    glutInitWindowSize(1280, 600);
+//    glutInitWindowSize(1280, 768);
     //glutInitWindowSize(1024, 768);  // window same bufferSizeFrames as XGA
     int mainWindow = glutCreateWindow(TITLE);
     //glutFullScreen();    // maximizes window, but is not game mode
@@ -96,6 +97,7 @@ void Display::special(int key, int xPos, int yPos)
 
 void Display::reshape(int w, int h)
 {
+  h = 500;
   Log::getInstance()->logger() << "Setting w=" << w << ", h=" << h << std::endl;
   std::for_each(graphicsItems.begin(), graphicsItems.end(), [&](auto item) { item->reshape(w, h); });
   glViewport(0, 0, w, h);
