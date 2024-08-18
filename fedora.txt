@@ -1,0 +1,5 @@
+dnf install freeglut-devel
+
+
+related hints
+pw-cat -r --target 54 /tmp/xxx.wav

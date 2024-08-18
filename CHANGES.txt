@@ -1,0 +1,7 @@
+only draw SPECTROGRAM
+comment out other display elements in common.h
+//#define DISPLAY_TIME 1
+//#define DISPLAY_SPECMAG 1
+#define DISPLAY_SPECTROGRAM 1
+//#define DISPLAY_TEXT 1
+
