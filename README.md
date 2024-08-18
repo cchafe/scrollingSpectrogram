@@ -1,7 +1,11 @@
-# Audio Visualization with OpenGL in C++
+# Scrolling Spectrogram using OpenGL in C++
 
-This is a rework of a real-time spectrogram based upon OpenGL, GLUT, and PortAudio.
+This is an adaptation of
+Anthony Agnone's [Audio Visualization with OpenGL in C++](https://github.com/aagnone3/audio_visualization)
+which is itself a rework of a real-time spectrogram based upon OpenGL, GLUT, and PortAudio.
 Original project: [Real-time OpenGL spectrogram by Alex Barnett](https://math.dartmouth.edu/~ahb/software/#glspect)
+
+The version created here is for a standalone raspberry pi 4 application that runs on top of Fedora 40 with pipewire audio. Various original features have been commented out. The real-time spectrum analyzer is being used for a continuous display of breath sounds.
 
 # Dependencies
 
@@ -45,13 +49,6 @@ opengl_spectrogram
 device_info
 ```
 
-# Screenshot
-
-Here's a quick screenshot of [this song](https://www.youtube.com/watch?v=n70c3Dzw-ZM) around 1:45 on. Can you line it up?
-
-![Visualization Screenshot](https://raw.githubusercontent.com/aagnone3/audio_visualization/master/res/img/screenshot_armin.png)
-
-# Documentation
 
 See doc/ for Doxygen documentation of the source code.
 
