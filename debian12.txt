@@ -1,10 +1,13 @@
+not using qt, but
 qt6-base-dev
 qt6-tools-dev
 
-
+sudo apt install git
+https://github.com/cchafe/scrollingSpectrogram.git
+build-essential
+cmake
 freeglut3-dev
-
-dnf install freeglut-devel
+fftw3-dev
 
 
 related hints
