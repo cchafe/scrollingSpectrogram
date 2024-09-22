@@ -9,7 +9,9 @@ sudo apt install cmake
 sudo apt install freeglut3-dev
 sudo apt install libfftw3-dev
 sudo apt install portaudio19-dev
+sudo apt install qjackctl
 
+sudo service ssh start
 
 related hints
 pw-cat -r --target 54 /tmp/xxx.wav

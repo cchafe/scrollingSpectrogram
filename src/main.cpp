@@ -35,7 +35,7 @@ const char* const helptext[] = {
 
 int getInputDeviceId(const char *fn)
 {
-    return 8; // sysdefault uses pipewire alsa
+    return 2; // sysdefault uses pipewire alsa
 } 
 
 int main(int argc, char** argv)
