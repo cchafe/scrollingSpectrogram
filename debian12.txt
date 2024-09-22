@@ -1,0 +1,11 @@
+qt6-base-dev
+qt6-tools-dev
+
+
+freeglut3-dev
+
+dnf install freeglut-devel
+
+
+related hints
+pw-cat -r --target 54 /tmp/xxx.wav
