@@ -15,3 +15,59 @@ sudo service ssh start
 
 related hints
 pw-cat -r --target 54 /tmp/xxx.wav
+
+////////////////////////////////
+after R2
+////////////////////////////////
+
+zenity hints
+https://www.linux.org/threads/introduction-to-zenity-part-1.44381/
+https://www.linux.org/threads/introduction-to-zenity-part-2.44749/
+
+sudo apt install audacity
+sudo apt install ecasound [not needed, removed]
+
+/usr/bin/jackd -dalsa -dhw:CODEC -r48000 -p128
+make
+
+ Static hostname: raspberrypi
+       Icon name: computer
+      Machine ID: 321d82ba61684fe28600cd193d6362a5
+         Boot ID: 64d47aad63304da58ad437e0724cc82e
+Operating System: Debian GNU/Linux 12 (bookworm)  
+          Kernel: Linux 6.6.47+rpt-rpi-v8
+    Architecture: arm64
+
+pipewire by default!!
+
+sudo apt autoremove
+sudo apt upgrade
+reboot
+
+autostart hints
+https://forums.raspberrypi.com/viewtopic.php?t=294014
+
+sudo gedit /lib/systemd/system/sample.service &
+sudo systemctl daemon-reload
+sudo systemctl stop sample.service
+sudo systemctl start sample.service
+sudo systemctl disable sample.service
+sudo systemctl enable sample.service
+
+/lib/systemd/system/sample.service
+////////////////////////////////////////////////////////////
+ [Unit]
+ Description=My Sample Service
+ After=graphical.target
+ Wants=graphical.target
+
+ [Service]
+ Environment=DISPLAY=:0.0
+ Environment=XAUTHORITY=/home/cc/.Xauthority
+ Type=oneshot
+ ExecStartPre=/bin/sleep 1
+ ExecStart=/bin/sh /home/cc/f40xfce/button.sh
+# ExecStart=/bin/sh -c 'zenity --info --text="USB Disk Added"'
+
+ [Install]
+ WantedBy=default.target
