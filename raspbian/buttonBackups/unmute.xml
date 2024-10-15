@@ -1,0 +1,50 @@
+<jmess>
+  <connection>
+    <output>US-2x2 Analog Stereo:capture_FL</output>
+    <input>PulseAudio Volume Control:input_FL-93</input>
+  </connection>
+  <connection>
+    <output>US-2x2 Analog Stereo:capture_FL</output>
+    <input>PipeWire ALSA [opengl_spectrogram]/ALSA Capture [opengl_spectrogram]:input_FL</input>
+  </connection>
+  <connection>
+    <output>US-2x2 Analog Stereo:capture_FL</output>
+    <input>pw-cat:input_FL</input>
+  </connection>
+  <connection>
+    <output>US-2x2 Analog Stereo:capture_FR</output>
+    <input>PulseAudio Volume Control:input_FR-95</input>
+  </connection>
+  <connection>
+    <output>US-2x2 Analog Stereo:capture_FR</output>
+    <input>PipeWire ALSA [opengl_spectrogram]/ALSA Capture [opengl_spectrogram]:input_FR</input>
+  </connection>
+  <connection>
+    <output>US-2x2 Analog Stereo:capture_FR</output>
+    <input>pw-cat:input_FR</input>
+  </connection>
+  <connection>
+    <output>US-2x2 Analog Stereo:monitor_FL</output>
+    <input>PulseAudio Volume Control:input_FL</input>
+  </connection>
+  <connection>
+    <output>US-2x2 Analog Stereo:monitor_FR</output>
+    <input>PulseAudio Volume Control:input_FR</input>
+  </connection>
+  <connection>
+    <output>Built-in Audio Digital Stereo (HDMI):monitor_FL</output>
+    <input>PulseAudio Volume Control:input_FL-105</input>
+  </connection>
+  <connection>
+    <output>Built-in Audio Digital Stereo (HDMI):monitor_FR</output>
+    <input>PulseAudio Volume Control:input_FR-107</input>
+  </connection>
+  <connection>
+    <output>Built-in Audio Stereo:monitor_FL</output>
+    <input>PulseAudio Volume Control:input_FL-99</input>
+  </connection>
+  <connection>
+    <output>Built-in Audio Stereo:monitor_FR</output>
+    <input>PulseAudio Volume Control:input_FR-101</input>
+  </connection>
+</jmess>

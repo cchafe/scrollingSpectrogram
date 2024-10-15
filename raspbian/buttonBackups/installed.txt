@@ -1,0 +1,37 @@
+audacity
+qjackctl
+zenity
+https://chuck.stanford.edu/planetccrma/mirror/fedora/linux/planetccrma/40/aarch64/repoview/jmess.html
+https://chuck.stanford.edu/planetccrma/mirror/fedora/linux/planetccrma/40/aarch64/snd-24.4-1.fc40.ccrma.aarch64.rpm
+
+
+dnf groupinstall "C Development Tools and Libraries"
+dnf -y groupinstall "Development Tools"
+freeglut-devel cmake fftw3-devel portaudio-devel
+
+git clone https://github.com/cchafe/scrollingSpectrogram.git git-scrollingSpectrogram
+
+went to sound: audio mixer
+then to configuration tab
+switched tascam to 'pro' didn't work, then switched tascam to analog stereo duplex and all works
+set tasam as output default
+change to 
+--------------------------------------- device #3
+Name                        = US-2x2 Analog Stereo
+pw-cat -r --target 417 /tmp/xxx.wav
+
+on boot
+pavucontrol &
+qjackctl &
+git-scrollingSpectrogram/build/opengl_spectrogram &
+pw-cat -r --target 78 /tmp/xxx.wav
+
+
+to see other planetccrma packages
+https://chuck.stanford.edu/planetccrma/mirror/fedora/linux/planetccrma/40/aarch64/repoview/
+https://chuck.stanford.edu/planetccrma/mirror/fedora/linux/planetccrma/40/aarch64/repoview/applications.multimedia.group.html
+
+
+dnf install meson qt5-qtbase-devel qt5-qtquickcontrols2-devel qt5-qtsvg-devel qt5-qtnetworkauth-devel qt5-qtwebsockets-devel rtaudio-devel "pkgconfig(jack)" help2man python3-jinja2 python3-pyyaml
+
+dnf install meson qt5-qtbase-devel qt5-qtquickcontrols2-devel qt5-qtsvg-devel qt5-qtnetworkauth-devel qt5-qtwebsockets-devel rtaudio-devel "pkgconfig(jack)" help2man python3-jinja2 python3-pyyaml

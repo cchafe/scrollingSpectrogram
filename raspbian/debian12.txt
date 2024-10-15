@@ -47,6 +47,13 @@ reboot
 autostart hints
 https://forums.raspberrypi.com/viewtopic.php?t=294014
 
+sudo gedit /lib/systemd/system/tam.service &
+sudo systemctl daemon-reload
+sudo systemctl stop tam.service
+sudo systemctl start tam.service
+sudo systemctl disable tam.service
+sudo systemctl enable tam.service
+
 sudo gedit /lib/systemd/system/sample.service &
 sudo systemctl daemon-reload
 sudo systemctl stop sample.service
@@ -54,7 +61,8 @@ sudo systemctl start sample.service
 sudo systemctl disable sample.service
 sudo systemctl enable sample.service
 
-/lib/systemd/system/sample.service
+
+sudo gedit /lib/systemd/system/sample.service &
 ////////////////////////////////////////////////////////////
  [Unit]
  Description=My Sample Service
@@ -65,6 +73,7 @@ sudo systemctl enable sample.service
  Environment=DISPLAY=:0.0
  Environment=XAUTHORITY=/home/cc/.Xauthority
  Type=oneshot
+ RemainAfterExit=true
  ExecStartPre=/bin/sleep 1
  ExecStart=/bin/sh /home/cc/f40xfce/button.sh
 # ExecStart=/bin/sh -c 'zenity --info --text="USB Disk Added"'
