@@ -6,7 +6,7 @@ then
     exit
 else
     echo "scroll"
-# tam.service    /home/cc/scrollingSpectrogram/build/opengl_spectrogram &
+    /home/cc/scrollingSpectrogram/build/opengl_spectrogram &
     sleep 30
     pw-cat -r --target 71 /tmp/xxx.wav &
     wpctl set-volume 71 1.0

@@ -4,7 +4,7 @@ if [ "$?" != 0 ]
 then
     echo "quit"
     killall pw-cat
-#    killall opengl_spectrogram
+    killall opengl_spectrogram
     /home/cc/f40xfce/button.sh &
     exit
 else
