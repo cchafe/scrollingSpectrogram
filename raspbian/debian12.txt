@@ -47,13 +47,15 @@ reboot
 autostart hints
 https://forums.raspberrypi.com/viewtopic.php?t=294014
 
-sudo gedit /lib/systemd/system/tam.service &
-sudo systemctl daemon-reload
-sudo systemctl stop tam.service
-sudo systemctl start tam.service
 sudo systemctl disable tam.service
-sudo systemctl enable tam.service
+  sudo gedit /lib/systemd/system/tam.service &
+    sudo systemctl daemon-reload
+    sudo systemctl stop tam.service
+    sudo systemctl start tam.service
+    sudo systemctl disable tam.service
+    sudo systemctl enable tam.service
 
+sudo systemctl disable sample.service
 sudo gedit /lib/systemd/system/sample.service &
 sudo systemctl daemon-reload
 sudo systemctl stop sample.service
@@ -61,6 +63,7 @@ sudo systemctl start sample.service
 sudo systemctl disable sample.service
 sudo systemctl enable sample.service
 
+sudo systemctl status pipewire.service
 
 sudo gedit /lib/systemd/system/sample.service &
 ////////////////////////////////////////////////////////////
@@ -80,3 +83,42 @@ sudo gedit /lib/systemd/system/sample.service &
 
  [Install]
  WantedBy=default.target
+////////////////////////////////////////////////////////////
+nope needs to be systemctl --user to get at pipewire otherwise scrolling bypasses it and connects direct to device
+cc@raspberrypi:~ $ scp /tmp/xxx.wav cmn9.stanford.edu:/tmp/
+/////
+cd .config/systemd/user
+sample.service
+/////
+
+ [Unit]
+ Description=My Sample Service
+#  After=pipewire.service wireplumber.service
+#  Wants=pipewire.service wireplumber.service
+# After=graphical.target pipewire.service wireplumber.service
+# Wants=graphical.target pipewire.service wireplumber.service
+
+ [Service]
+ Environment=DISPLAY=:0.0
+ Environment=XAUTHORITY=/home/cc/.Xauthority
+ Type=oneshot
+ RemainAfterExit=true
+ ExecStartPre=/bin/sleep 20
+ ExecStart=/bin/sh /home/cc/f40xfce/button.sh
+# ExecStart=/bin/sh -c 'zenity --info --text="USB Disk Added"'
+
+ [Install]
+ WantedBy=default.target
+ 
+ # https://unix.stackexchange.com/questions/776537/display-variable-in-systemd-user-session
+ # https://scruss.com/blog/2017/10/22/creating-a-systemd-user-service-on-your-raspberry-pi/
+/////
+
+systemctl --user daemon-reload
+systemctl --user stop  sample.service
+systemctl --user disable  sample.service
+systemctl --user enable  sample.service
+
+
+
+
