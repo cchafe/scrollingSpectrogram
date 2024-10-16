@@ -8,7 +8,7 @@ else
     echo "scroll"
     /home/cc/scrollingSpectrogram/build/opengl_spectrogram &
     sleep 30
-    pw-cat -r --target 71 /tmp/xxx.wav &
+    pw-cat -r --target 71 /tmp/tam`date +%d%m%y:%H:%M`.wav &
     wpctl set-volume 71 1.0
     /home/cc/f40xfce/muteButton.sh
     exit
