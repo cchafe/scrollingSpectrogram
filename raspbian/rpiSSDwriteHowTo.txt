@@ -1,0 +1,69 @@
+ussd in samsung card adapter in card2usb adapter in usb
+[don't use the card slot -- doesn't work for the following steps]
+let the ussd be mounted and don't unmount
+lsblk should show 
+sda disk
+-- sda1 partition
+[don't try it with mmcblk0]
+
+test with
+xzcat Fedora-IoT-raw-40-20240422.3.aarch64.raw.xz | sudo dd status=progress bs=4M of=/dev/sda
+
+do the actual write with
+sudo arm-image-installer --image=Fedora-IoT-raw-40-20240422.3.aarch64.raw.xz --target=rpi4 --media=/dev/sda --resizefs --norootpass
+
+will end with
+Installation Complete! Insert into the rpi4 and boot.
+
+
+sudo arm-image-installer --image=Fedora-Workstation-40-1.14.aarch64.raw.xz --target=rpi4 --media=/dev/sda --resizefs --norootpass
+
+sudo arm-image-installer --image=Fedora-Xfce-40-1.14.aarch64.raw.xz --target=rpi4 --media=/dev/sda --resizefs --norootpass
+
+//////////////////////////////
+(hack -- burn raspbian with fedora) -- works!
+sudo arm-image-installer --image=2024-07-04-raspios-bookworm-arm64-full.img.xz --target=rpi4 --media=/dev/sda --resizefs --norootpass
+
+clone
+sudo dd status=progress bs=4M if=/dev/sda | xz > /tmp/image`date +%d%m%y`.xz
+
+sudo arm-image-installer --image=/tmp/image081024.xz --target=rpi4 --media=/dev/sda --resizefs --norootpass
+
+//////////////////////////////
+
+very long first run boot -- doing audits continuously
+login root
+[no pwd]
+bare system
+$ sudo auditctl --signal stop
+$ sudo systemctl start auditd.service  # Only if you want it started again
+
+sudo arm-image-installer --image=Fedora-IoT-raw-40-20240422.3.aarch64.raw.xz --target=rpi4 --media=/dev/sda --resizefs --norootpass
+
+sudo dd status=progress bs=4M if=/dev/sda | xz > /tmp/image`date +%d%m%y`.xz
+sudo arm-image-installer --image=/tmp/image180824.xz --target=rpi4 --media=/dev/sdb --resizefs --norootpass
+
+..................................
+https://wiki.pine64.org/wiki/PinePhone_Pro
+On the Explorer Edition ordered after July 2022 hold the volume down key while booting.
+
+gnome
+xzcat Manjaro-ARM-gnome-mobile-pinephonepro-20231217.img.xz | sudo dd of=/dev/sda bs=1M status=progress conv=fsync
+
+phosh
+xzcat Manjaro-ARM-phosh-pinephonepro-beta36.img.xz | sudo dd of=/dev/sda bs=1M status=progress conv=fsync
+
+plasma
+Manjaro-ARM-plasma-mobile-pinephonepro-beta15.img.xz
+xzcat Manjaro-ARM-plasma-mobile-pinephonepro-beta15.img.xz | sudo dd of=/dev/sda bs=1M status=progress conv=fsync
+
+pinephone-pro-rk3399
+sudo arm-image-installer --image=Fedora-Xfce-40-1.14.aarch64.raw.xz --target=pinephone-pro-rk3399 --media=/dev/sda --resizefs --norootpass
+
+https://github.com/manjaro-pinephone/phosh/releases
+xzcat Manjaro-ARM-phosh-pinephonepro-beta37.img.xz | sudo dd status=progress bs=4M of=/dev/sda
+1.2G xz writes 6.8G img
+Manjaro-ARM-plasma-mobile-pinephonepro-beta16.img.xz
+xzcat Manjaro-ARM-plasma-mobile-pinephonepro-beta16.img.xz | sudo dd status=progress bs=4M of=/dev/sda
+
+
