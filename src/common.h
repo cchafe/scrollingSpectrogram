@@ -7,6 +7,7 @@
 
 /* binary flags */
 //#define DEBUG 1
+#define DISPLAY_CURVE 1
 //#define DISPLAY_TIME 1
 //#define DISPLAY_SPECMAG 1
 #define DISPLAY_SPECTROGRAM 1

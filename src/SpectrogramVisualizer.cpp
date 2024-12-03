@@ -172,6 +172,57 @@ void SpectrogramVisualizer::plotTimeDomain() {
     glPopMatrix();
 }
 
+// Define constants
+const int WIDTH = 800;
+const int HEIGHT = 600;
+
+void SpectrogramVisualizer::plotTimeCurve() {
+    float maxAmplitude = 0.3;  // TODO instance variable
+    float lookbackSeconds = 0.45;    // only show the most recent number of seconds
+ float AMPLITUDE = maxAmplitude;
+ float FREQUENCY = 110.1f;
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
+    glLineWidth(1);
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix(); // use modelview matrix to transform [-lookbackSeconds,0]x[-1,1] somewhere
+    glTranslatef(0.98, 0.1, 0);
+    glScalef(2.0, maxAmplitude, 1.0);  // x-scale for time-units, y-scale is 1
+
+    /* draw axes */
+    char xLabel[] = "t(s)", yLabel[] = "";
+    drawAxes(-lookbackSeconds, 0, -maxAmplitude, maxAmplitude, 1, 1, xLabel, yLabel);
+
+    /* draw time domain signal */
+    glColor4f(0.4, 1.0, 0.6, 1);
+    glBegin(GL_LINE_STRIP);
+    int bufferIndex = audioInput->getBufferIndex();
+    auto lookbackSamples = (int) (lookbackSeconds * audioInput->getSamplingRate());
+
+    /* plot the most recent piece of buffer */
+    float *audioBuffer = audioInput->getAudioBuffer();
+    float samplingPeriod = audioInput->getSamplingPeriod();
+    int bufferSizeSamples = audioInput->getBufferSizeSamples();
+    float x = -lookbackSeconds;
+    float maxSample = -1e6, curSample;
+    if(false) for (int i = bufferIndex - lookbackSamples; i < bufferIndex; i++) {
+        curSample = std::min(maxAmplitude, audioBuffer[mod(i, bufferSizeSamples)]);
+        glVertex2f(
+            x,
+            curSample
+        );
+        if (curSample > maxSample) maxSample = curSample;
+        x += samplingPeriod;  /* time increment */
+    }
+    for (float x = -1.0f; x <= 1.0f; x += 0.0001f) {
+        float y = AMPLITUDE * sin(FREQUENCY * x);
+        glVertex2f(x, y);
+    }
+    glEnd();
+    glPopMatrix();
+}
+
 void SpectrogramVisualizer::plotSpectralMagnitude() {
     glPushMatrix();
     glTranslatef(0.05, 0.1, 0);
@@ -483,6 +534,10 @@ void SpectrogramVisualizer::display() {
     glEnd();
     glPopMatrix();
     glColor4f(0.7, 1.0, 1.0, 1);
+#endif
+
+#ifdef DISPLAY_CURVE
+    plotTimeCurve();
 #endif
 
 #ifdef DISPLAY_TIME

@@ -236,6 +236,11 @@ private:
     void plotTimeDomain();
 
     /**
+     * Displays an arbitrary time signal.
+     */
+    void plotTimeCurve();
+
+    /**
      * Displays the log magnitude spectral domain representation of the signal.
      */
     void plotSpectralMagnitude();
