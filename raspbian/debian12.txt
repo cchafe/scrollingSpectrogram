@@ -120,5 +120,13 @@ systemctl --user disable  sample.service
 systemctl --user enable  sample.service
 
 
+////////////////////////////////
+after scrollingSpectrogram, to build stk
+(on deian bookworm)
+////////////////////////////////
+sudo apt upgrade
+sudo apt install qt6*
+
+
 
 
