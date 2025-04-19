@@ -1,9 +1,30 @@
+apr-2025
+fresh install to 31GB sandisk
+https://www.raspberrypi.com/software/
+on len6 / f41 -------------------------------
+sudo dnf install rpi-imager
+use rpi-imager GUI from app menu
+raspbian latest 64-bit
+
+on new card ---------------------------------
+sudo apt autoremove
+sudo apt upgrade
+reboot
+sudo apt install cmake
+sudo apt install freeglut3-dev
+sudo apt install libfftw3-dev
+sudo apt install portaudio19-dev
+sudo apt install qjackctl
+sudo apt install qt6*
+
+////////////////////////////
 not using qt, but
 qt6-base-dev
 qt6-tools-dev
 
 -- comes with -- sudo apt install git
 https://github.com/cchafe/scrollingSpectrogram.git
+git checkout montam
 -- comes with -- sudo apt install build-essential
 sudo apt install cmake
 sudo apt install freeglut3-dev
