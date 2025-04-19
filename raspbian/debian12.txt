@@ -10,11 +10,7 @@ on new card ---------------------------------
 sudo apt autoremove
 sudo apt upgrade
 reboot
-sudo apt install cmake
-sudo apt install freeglut3-dev
-sudo apt install libfftw3-dev
-sudo apt install portaudio19-dev
-sudo apt install qjackctl
+sudo apt install cmake freeglut3-dev libfftw3-dev portaudio19-dev qjackctl
 sudo apt install qt6*
 
 clone new card ---------------------------------

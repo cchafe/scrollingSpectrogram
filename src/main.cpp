@@ -35,7 +35,7 @@ const char* const helptext[] = {
 
 int getInputDeviceId(const char *fn)
 {
-    return 13; // len6 pipewire f40
+    return 2; // len6 pipewire f40
 //    return 14; // len5 pipewire f40
 } 
 
