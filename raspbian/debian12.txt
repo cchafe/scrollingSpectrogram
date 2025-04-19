@@ -17,6 +17,46 @@ sudo apt install portaudio19-dev
 sudo apt install qjackctl
 sudo apt install qt6*
 
+clone new card ---------------------------------
+sudo apt install piclone
+
+It will only work with the command which launches it in the desktop file - "sudo dbus-launch piclone". Both of these are required - it needs sudo permissions for many of the gparted-type operations it performs, and it needs dbus-launch so it accesses the session bus for the drive monitor rather than the system bus which would otherwise be used with sudo.
+
+ussd in samsung card adapter in card2usb adapter in usb
+[don't use the card slot -- doesn't work for the following steps]
+let the ussd be mounted and don't unmount
+lsblk should show
+sda disk
+-- sda1 partition
+[don't try it with mmcblk0]
+
+////////////////////////////////
+after scrollingSpectrogram, to build stk
+(on debian bookworm)
+////////////////////////////////
+git clone  ------ git-tam
+
+reboot
+cd git-tam
+git checkout dev
+cd qt/stk
+qmake6
+
+git clone ------- stk
+sudo apt install autoconf
+autoconf
+./configure
+make
+sudo make install
+sudo rm /lib/aarch64-linux-gnu/libstk*
+sudo cp /usr/local/lib/libstk* /lib/aarch64-linux-gnu/
+
+cd git-tam/qt/stk
+make
+
+cd git-tam/qt/stk
+git checkout energy
+
 ////////////////////////////
 not using qt, but
 qt6-base-dev
