@@ -1,28 +1,6 @@
 autostart hints
 https://forums.raspberrypi.com/viewtopic.php?t=294014
 
-sudo systemctl disable tam.service
-  sudo gedit /lib/systemd/system/tam.service &
-    sudo systemctl daemon-reload
-    sudo systemctl stop tam.service
-    sudo systemctl start tam.service
-    sudo systemctl disable tam.service
-    sudo systemctl enable tam.service
-
-sudo systemctl disable sample.service
-sudo gedit /lib/systemd/system/sample.service &
-sudo systemctl daemon-reload
-sudo systemctl stop sample.service
-sudo systemctl start sample.service
-sudo systemctl disable sample.service
-sudo systemctl enable sample.service
-
-sudo systemctl status pipewire.service
-
-sudo gedit /lib/systemd/system/sample.service &
-
-systemctl --user to get at pipewire otherwise scrolling bypasses it and connects direct to device
-
 .config/systemd/user
 
 /////
